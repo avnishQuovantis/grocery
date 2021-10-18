@@ -1,0 +1,42 @@
+.catagoryContainer{
+    position: relative;
+    /* top:16vh; */
+}
+.catagoryItems{
+    width: 300px;
+    height: fit-content;
+    padding: 0.7rem;
+    background: whitesmoke;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 2px solid lightgray;
+    margin-top: 0.7rem;
+}
+.catagoryItems img{
+    width: 95%;
+    height: 150px;
+    margin-bottom: 7px;
+}
+.catagoryItems h6{
+    margin: 5px 0;
+    font-size: 1.5rem;
+}
+.price{
+    /* background-color: lightgray; */
+    width: 70%;
+    padding: 0.4rem;
+    text-align: center;
+}
+.price button{
+    margin-top:5px;
+    /* margin: auto; */
+}
+.price span{
+    font-size: 1.1rem;
+}
+.quantity > span{
+    margin:auto
+}

@@ -1,0 +1,72 @@
+*{
+    box-sizing: border-box;
+}
+.headContainer{
+    width: 100%;
+    height: 15vh;
+    position: fixed;
+    top:0px;
+    left: 0px;
+    /* border: 2px solid; */
+    /* background-color: rgb(159, 159, 224); */
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly
+
+}
+.searchInput{
+    width: 45%;
+    /* height: 40px; */
+}
+
+.logo{
+width: 25%;
+text-align: center;
+}
+.logo button{
+    font-size:2.5rem;
+    font-weight: bolder;
+     
+}
+.menuBar{
+    display: flex;
+    justify-content: space-evenly;
+    width: 35%;
+}
+.basket{
+    position:relative;
+    width: 60px;
+    height: 60px;
+    
+}
+#basketIcon{
+    width: 2rem;
+    height: 2rem;
+    /* -ms-flex-align: start; */
+    color:whitesmoke
+}
+.Qty{
+    position: absolute;
+    top: -2px;
+    left:1.55rem;
+    font-size: 1rem;
+    color: whitesmoke;
+}
+.dropmenu{
+    position: fixed;
+    top:10vh;
+    right:6vw;
+    width: 120px;
+    height: 120px;
+    border: 2px solid;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 11;
+    transition:transform 0.5s ease-in-out
+}

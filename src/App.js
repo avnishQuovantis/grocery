@@ -1,57 +1,37 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+// import { Counter } from './features/counter/Counter';
 import './App.css';
-
+import Home from './component/Home';
+import Heading from './component/Heading';
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+// import Basket from './component/Basket';
+import Login from './component/Login';
+import Signup from './component/Signup';
+import Catagory from './component/Catagory';
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import Cart from './component/Cart';
+import Search from './component/Search';
+import Checkout from './component/Checkout';
 function App() {
+
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <Heading/>
+      <Switch>
+      <Route exact path="/"><Home></Home> </Route>
+      <Route exact path="/cart"><Cart /></Route>
+      <Route path="/login"><Login/></Route>
+      <Route path="/signup"><Signup/></Route>
+      <Route path="/catagory/:name"><Catagory /></Route>
+      <Route path="/search/:search"><Search/></Route>
+      <Route path="/checkout"><Checkout/></Route>
+      </Switch>
     </div>
+
+    </Router>
   );
 }
 
