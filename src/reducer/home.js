@@ -6,7 +6,7 @@ let initialState={
     data:data,
     qty:0,
     cart:[],
-    currUser:null
+    currUser:JSON.parse(localStorage.getItem("currUser"))
 }
 const home=(state=initialState,action)=>{
     // console.log(action.payload);
@@ -49,9 +49,11 @@ const home=(state=initialState,action)=>{
             }
         case "login":
             console.log("logn",action.payload.email);
+            let obj=JSON.stringify(action.payload)
+            localStorage.setItem("currUser",obj)
            return{
                ...state,
-               currUser:action.payload
+               currUser:JSON.parse(localStorage.getItem("currUser"))
            }
            case "signup":
                let email=action.payload.email
@@ -59,10 +61,10 @@ const home=(state=initialState,action)=>{
                localStorage.setItem(email,value)
                
         case "signout":
-            
+            localStorage.setItem("currUser",null)
             return{
             ...state,
-            currUser:null
+            currUser:JSON.parse(localStorage.getItem("currUser"))
              }
         default:
             return state

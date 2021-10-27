@@ -9,8 +9,14 @@
     background-color: whitesmoke;
     margin-bottom: 5px;
     margin-right: 10px;
+    transition: transform 0.4s ease-in-out;
 }
-
+.catagoryRows:hover{
+    transform:scale(1.1);
+    opacity: 0.9;
+  
+    box-shadow: 0 0 5px #ffee10;
+}
 .list{
     display: flex;
     overflow-x: auto;
@@ -64,4 +70,48 @@
 }
 .qtyPrice> span{
     font-size: 0.9rem;
+}
+@media screen and (max-width:250px) {
+    .catagoryRows img {
+        width: 104px;
+        height: 63px;
+    }
+}
+@media screen and (min-width:250px) and (max-width:545px) {
+    .catagoryRows{
+   
+    width: 95%;
+    height: 188px;
+   
+    }
+    
+    .catagoryRows img {
+        width: 108px;
+        height: 86px;
+    }
+    .catagoryRows h6 {
+        font-size: 0.7rem;
+    }
+    .catagoryRows span{
+
+    font-size: 0.7rem;
+
+    }
+    .rowButtons{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: baseline;
+        width: 100%;
+    }
+    .rowBtn {
+        font-size: 0.4rem;
+        padding: 0rem 0.2rem;
+        border-radius: 100%;
+    }
+    .rating {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7rem;
+    }
 }

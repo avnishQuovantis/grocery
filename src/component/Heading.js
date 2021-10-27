@@ -7,7 +7,7 @@ import Home from "./Home";
 export default function Heading() {
   let state = useSelector((state) => state.home);
   let dispatch = useDispatch();
-  let { name } = useParams();
+  // let { name } = useParams();
   const history = useHistory();
   const [search, setSearch] = useState("");
   console.log(state);
@@ -23,19 +23,21 @@ export default function Heading() {
       history.push("/");
     }
   };
-  console.log(state);
+  const headingBtn = (val) => {
+    history.push(val);
+  };
+  console.log(user);
   return (
     <div className="headContainer">
       <div className="logo head">
-        <Link to="/">
-          <button type="button" class="btn btn-primary">
-            Grocery
-          </button>
-        </Link>
+        <button className="btn btn-success" onClick={() => headingBtn("/")}>
+          Grocery
+        </button>
       </div>
       {/* <input className="form-control" placeholder="search" type="text"/> */}
-      <div class="input-group mb-3 searchInput">
+      <div class="input-group  searchInput">
         <input
+        data-testid="search"
           type="text"
           class="form-control"
           placeholder="Search"
@@ -53,6 +55,7 @@ export default function Heading() {
           type="button"
           id="button-addon2"
           onClick={searchButton}
+          data-testid="searchBtn"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,9 +70,13 @@ export default function Heading() {
         </button>
       </div>
       <div className="menuBar head">
-        <Link to="/cart">
+        <button className="btn" onClick={() => headingBtn("/cart")}>
           {" "}
-          <button type="button" class="btn btn-primary basket">
+          <button
+            data-testid="basket"
+            type="button"
+            class="btn btn-danger basket"
+          >
             <span className="Qty">{state.qty}</span>
 
             <svg
@@ -84,33 +91,45 @@ export default function Heading() {
               <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
             </svg>
           </button>
-        </Link>
+        </button>
         <button
-          className="btn btn-primary dropBtn"
+          className="btn btn-outline-dark dropBtn"
           onClick={() => setOpen(!open)}
+          data-testid="loginSignup"
         >
-          login
-          {/* {user == null ? <span>login</span> : <span>{user.fname}</span>} */}
+          {/* login */}
+          {user == null ? <span>login</span> : <span>{user.fname}</span>}
         </button>
         {open && (
-          <div className="dropmenu">
+          <div className={`dropmenu ${open ? "openModal" : "closeModal"}`}>
             {user == null ? (
               <>
-                <Link to="/login">
-                  <button class="btn btn-outline-primary">Login</button>
-                </Link>
-                <Link to="/signup">
-                  <button class="btn btn-outline-primary">Signup</button>
-                </Link>
+                <button
+                  onClick={() => headingBtn("/login")}
+                  className="btn btn-outline-primary"
+                  data-testid="login"
+                >
+                  Login
+                </button>
+
+                <button
+                  onClick={() => headingBtn("/signup")}
+                  className="btn btn-outline-primary"
+                  data-testid="signup"
+                >
+                  Signup
+                </button>
               </>
             ) : (
               <>
                 <div>{user.fname}</div>
                 <button
                   className="btn btn-danger"
-                  onClick={()=>dispatch({
-                    type: "signout",
-                  })}
+                  onClick={() =>
+                    dispatch({
+                      type: "signout",
+                    })
+                  }
                 >
                   sign out
                 </button>

@@ -14,8 +14,10 @@ import { useDispatch } from 'react-redux'
 import Cart from './component/Cart';
 import Search from './component/Search';
 import Checkout from './component/Checkout';
-function App() {
 
+import ItemDetails from './component/ItemDetails';
+function App() {
+localStorage.setItem("currUser",null)
   return (
     <Router>
     <div className="App">
@@ -28,6 +30,7 @@ function App() {
       <Route path="/catagory/:name"><Catagory /></Route>
       <Route path="/search/:search"><Search/></Route>
       <Route path="/checkout"><Checkout/></Route>
+      <Route path="/item/:name"><ItemDetails/></Route>
       </Switch>
     </div>
 

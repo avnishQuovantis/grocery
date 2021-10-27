@@ -25,7 +25,7 @@ export default function Login() {
     }
     return (
         <div className="login">
-            <h1>Login</h1>
+            <h1 data-testid="loginTitle">Login</h1>
             <input type="email" value={email} class="form-control" placeholder="Username"
                 onChange={e=>setEmail(e.target.value)}
             />
