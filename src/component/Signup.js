@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router";
-import "./css/loginSignup.css";
+import "./css/loginSignup.scss";
 export default function Signup() {
   const selector = useSelector((state) => state.home);
   const dispatch = useDispatch();

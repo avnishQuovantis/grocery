@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
-import "./css/loginSignup.css"
+import "./css/loginSignup.scss"
 export default function Login() {
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")

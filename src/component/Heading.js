@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./css/heading.css";
+import "./css/heading.scss";
 // import {Link}
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -30,14 +30,14 @@ export default function Heading() {
   return (
     <div className="headContainer">
       <div className="logo head">
-        <button className="btn btn-success" onClick={() => headingBtn("/")}>
+        <button className="btn" onClick={() => headingBtn("/")}>
           Grocery
         </button>
       </div>
       {/* <input className="form-control" placeholder="search" type="text"/> */}
       <div class="input-group  searchInput">
         <input
-        data-testid="search"
+          data-testid="search"
           type="text"
           class="form-control"
           placeholder="Search"
@@ -70,43 +70,46 @@ export default function Heading() {
         </button>
       </div>
       <div className="menuBar head">
-        <button className="btn" onClick={() => headingBtn("/cart")}>
-          {" "}
-          <button
-            data-testid="basket"
-            type="button"
-            class="btn btn-danger basket"
-          >
-            <span className="Qty">{state.qty}</span>
+        {/* <button className="btn basketIcon" onClick={() => headingBtn("/cart")}> */}
 
-            <svg
-              id="basketIcon"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-basket"
-              viewBox="0 0 16 16"
-            >
-              <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
-            </svg>
-          </button>
-        </button>
         <button
-          className="btn btn-outline-dark dropBtn"
+          data-testid="basket"
+          type="button"
+          class="btn basket "
+          onClick={() => headingBtn("/cart")}
+        >
+          <span className="Qty">{state.qty}</span>
+
+          <svg
+            id="basketIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-basket"
+            viewBox="0 0 16 16"
+          >
+            <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
+          </svg>
+        </button>
+        {/* </button> */}
+        <div className="dropBtnContainer">
+        <button
+          className="btn  dropBtn"
           onClick={() => setOpen(!open)}
           data-testid="loginSignup"
         >
           {/* login */}
           {user == null ? <span>login</span> : <span>{user.fname}</span>}
         </button>
-        {open && (
+        {
+          
           <div className={`dropmenu ${open ? "openModal" : "closeModal"}`}>
             {user == null ? (
               <>
                 <button
                   onClick={() => headingBtn("/login")}
-                  className="btn btn-outline-primary"
+                  className="btn modalBtn modalBtn__login"
                   data-testid="login"
                 >
                   Login
@@ -114,7 +117,7 @@ export default function Heading() {
 
                 <button
                   onClick={() => headingBtn("/signup")}
-                  className="btn btn-outline-primary"
+                  className="btn modalBtn modalBtn__signup"
                   data-testid="signup"
                 >
                   Signup
@@ -122,13 +125,20 @@ export default function Heading() {
               </>
             ) : (
               <>
-                <div>{user.fname}</div>
+                <button className="btn btn-secondary"
+                  onClick={history.push({
+                    pathname: `/user/${user.fname}`,
+                    user: user
+                  })}>{user.fname}</button>
                 <button
-                  className="btn btn-danger"
-                  onClick={() =>
+                  className="btn modalBtn modalBtn__signout"
+                  onClick={() => {
+
                     dispatch({
                       type: "signout",
                     })
+                    history.push("/")
+                  }
                   }
                 >
                   sign out
@@ -136,7 +146,8 @@ export default function Heading() {
               </>
             )}
           </div>
-        )}
+        }
+          </div>
       </div>
     </div>
   );

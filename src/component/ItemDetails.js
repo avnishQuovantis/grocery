@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router";
-import "./css/itemDetails.css";
+import "./css/itemDetails.scss";
 export default function ItemDetails() {
   //   const location = useLocation();
   //   const { data } = location.state;
@@ -33,7 +33,7 @@ export default function ItemDetails() {
           ,<h5>Price : </h5>
           <span> {data.price}</span>
         </div>
-        <div className="rating">
+        <div className="itemsRating">
                 <h5>Rating:</h5>
                 {data.rating} <span class="material-icons">star</span>
               </div>

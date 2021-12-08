@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./css/checkout.css";
+import "./css/checkout.scss";
 export default function Checkout() {
   const select = useSelector((state) => state.home);
   const data = select.cart;
